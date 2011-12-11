@@ -932,7 +932,7 @@ roll_trickle_accept(uint8_t in)
 #endif
 
 #if UIP_MCAST6_STATS
-  if(in == UIP_MCAST6_DGRAM_IN) {
+  if(in == ROLL_TRICKLE_DGRAM_IN) {
     STATS_ADD(mcast_in_all);
   }
 #endif
@@ -1005,7 +1005,7 @@ roll_trickle_accept(uint8_t in)
   }
 
 #if UIP_MCAST6_STATS
-  if(in == UIP_MCAST6_DGRAM_IN) {
+  if(in == ROLL_TRICKLE_DGRAM_IN) {
     STATS_ADD(mcast_in_unique);
   }
 #endif
