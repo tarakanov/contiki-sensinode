@@ -40,11 +40,14 @@
 /*
  * USARTs:
  *   SmartRF RS232 -> USART0 / Alternative 1 (UART)
- *   SmartRF LCD   -> USART1 / Alternative 2 (SPI)
+ *   SmartRF LCD   -> USART1 / Alternative 2 (SPI):
+ *     SPI slave mode
+ *     Alternative pins
+ *     CPOL 1
+ *     CPHA 1
+ *     bit order 1 - MSB
  */
 #define UART_ON_USART     0
-
-#define UART1_CONF_ENABLE 0
 
 #ifndef UART0_CONF_ENABLE
 #define UART0_CONF_ENABLE  1
@@ -57,6 +60,27 @@
 #define UART0_CONF_HIGH_SPEED 0
 #endif
 
+#ifndef USART1_CONF_ENABLE /* Set GPIO as a peripheral */
+#define USART1_CONF_ENABLE 1
+#endif
+#ifndef USART1_CONF_ALTERNATIVE  /* Select alternative location for peripheral pins  (1 for cc2530dk LCD) */
+#define USART1_CONF_ALTERNATIVE 1
+#endif
+#ifndef USART1_CONF_UART_ENABLE  /* 0 - SPI, 1 - UART */
+#define USART1_CONF_UART_ENABLE 0 
+#endif
+#ifndef SPI1_SLAVE_CONF_ENABLE  /* SPI slave enable */
+#define SPI1_SLAVE_CONF_ENABLE 0 
+#endif
+#ifndef SPI1_CPOL_CONF  /* SPI Clock polarity (0 - Negative, 1 - Positive) */
+#define SPI1_CPOL_CONF 1 
+#endif
+#ifndef SPI1_CPHA_CONF  /* SPI Clock phase */
+#define SPI1_CPHA_CONF 1 
+#endif
+#ifndef SPI1_ORDER_CONF  /* SPI Bit order for transfers (0 - LSB, 1 - MSB)*/
+#define SPI1_ORDER_CONF 1 
+#endif
 /* USB output buffering enabled by default (relevant to cc2531 builds only) */
 #ifndef USB_SERIAL_CONF_BUFFERED
 #define USB_SERIAL_CONF_BUFFERED 1

@@ -16,6 +16,7 @@
 #include "dev/button-sensor.h"
 #include "dev/adc-sensor.h"
 #include "dev/leds-arch.h"
+#include "dev/gpio.h"
 #include "net/rime.h"
 #include "net/netstack.h"
 #include "net/mac/frame802154.h"
@@ -149,7 +150,10 @@ main(void) CC_NON_BANKED
   rtimer_init();
 
   stack_poison();
-
+  /* SPI1 initialization */
+#if (USART1_ENABLE && !USART1_UART_ENABLE)
+  spi1_init();
+#endif
   /* Init LEDs here */
   leds_init();
   leds_off(LEDS_ALL);

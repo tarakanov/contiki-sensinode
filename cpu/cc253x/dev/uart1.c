@@ -14,14 +14,14 @@
 #include "cc253x.h"
 #include "dev/uart1.h"
 
-#if UART1_ENABLE
+#if (USART1_ENABLE && USART1_UART_ENABLE)
 /*---------------------------------------------------------------------------*/
 /* UART1 initialization */
 void
 uart1_init()
 {
-#ifdef UART1_ALTERNATIVE_1
-  PERCFG &= ~PERCFG_U1CFG; /*alternative port 1 = P0.5-2*/
+#if !USART1_CONF_ALTERNATIVE
+  PERCFG &= ~PERCFG_U1CFG; /*initial location = P0.5-2*/
 #ifdef UART1_RTSCTS
   P0SEL |= 0x3C;    /*peripheral select for TX and RX, RTS, CTS*/
 #else
@@ -31,7 +31,7 @@ uart1_init()
   P0DIR |= 0x18;    /*RTS, TX out*/
   P0DIR &= ~0x24;   /*CTS, RX in*/
 #else
-  PERCFG |= PERCFG_U1CFG;  /*alternative port 2 = P1.7-4*/
+  PERCFG |= PERCFG_U1CFG;  /*alternative location = P1.7-4*/
 #ifdef UART1_RTSCTS
   P1SEL |= 0xF0;    /*peripheral select for TX and RX*/
 #else

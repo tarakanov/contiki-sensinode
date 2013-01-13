@@ -111,6 +111,12 @@ SFR(S0CON,     0x98); /* Interrupt flags 2 */
   SBIT(ENCIF_1,  0x98, 1); /* AES Interrupt flag 1 */
   SBIT(ENCIF_0,  0x98, 0); /* AES Interrupt flag 0 */
 SFR(IEN2,      0x9A); /* Interrupt enable 2 */
+  SBIT(WDTIE,    0x9A, 5); /* Watchdog Timer interrupt enable */
+  SBIT(P1IE,     0x9A, 4); /* Port 1 interrupt enable */
+  SBIT(UTX1IE,   0x9A, 3); /* USART 1 TX interrupt enable */
+  SBIT(UTX0IE,   0x9A, 2); /* USART 0 TX interrupt enable */
+  SBIT(P2IE,     0x9A, 1); /* Port 2 interrupt enable */
+  SBIT(RFIE,     0x9A, 0); /* RF General interrupt enable */
 SFR(S1CON,     0x9B); /* Interrupt flags 3 */
 SFR(P2,        0xA0); /* Port 2 */
   SBIT(P2_7,     0xA0, 7); /* Port 2 bit 7 */

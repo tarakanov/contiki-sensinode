@@ -134,6 +134,11 @@
 #define UCSR_TX_BYTE 0x02
 #define UCSR_ACTIVE  0x01
 
+/* UxGCR */
+#define UGCR_CPOL    0x80
+#define UGCR_CPHA    0x40
+#define UGCR_ORDER   0x20
+
 /* IEN2 */
 #define IEN2_WDTIE   0x20
 #define IEN2_P1IE    0x10
