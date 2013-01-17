@@ -124,6 +124,16 @@
 #define PERCFG_U1CFG 0x02
 #define PERCFG_U0CFG 0x01
 
+/* APCFG */
+#define APCFG_AIN7 0x80
+#define APCFG_AIN6 0x40
+#define APCFG_AIN5 0x20
+#define APCFG_AIN4 0x10
+#define APCFG_AIN3 0x08
+#define APCFG_AIN2 0x04
+#define APCFG_AIN1 0x02
+#define APCFG_AIN0 0x01
+
 /* UxCSR */
 #define UCSR_MODE    0x80
 #define UCSR_RE      0x40

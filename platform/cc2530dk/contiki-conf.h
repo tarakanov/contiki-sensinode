@@ -43,8 +43,8 @@
  *   SmartRF LCD   -> USART1 / Alternative 2 (SPI):
  *     SPI slave mode
  *     Alternative pins
- *     CPOL 1
- *     CPHA 1
+ *     CPOL 0
+ *     CPHA 0
  *     bit order 1 - MSB
  */
 #define UART_ON_USART     0
@@ -73,14 +73,19 @@
 #define SPI1_SLAVE_CONF_ENABLE 0 
 #endif
 #ifndef SPI1_CPOL_CONF  /* SPI Clock polarity (0 - Negative, 1 - Positive) */
-#define SPI1_CPOL_CONF 1 
+#define SPI1_CPOL_CONF 0 
 #endif
 #ifndef SPI1_CPHA_CONF  /* SPI Clock phase */
-#define SPI1_CPHA_CONF 1 
+#define SPI1_CPHA_CONF 0 
 #endif
 #ifndef SPI1_ORDER_CONF  /* SPI Bit order for transfers (0 - LSB, 1 - MSB)*/
 #define SPI1_ORDER_CONF 1 
 #endif
+
+#ifndef USE_LCD
+#define USE_LCD 1
+#endif
+
 /* USB output buffering enabled by default (relevant to cc2531 builds only) */
 #ifndef USB_SERIAL_CONF_BUFFERED
 #define USB_SERIAL_CONF_BUFFERED 1
@@ -132,7 +137,7 @@
  * interested in any of the above. Define as 1 (e.g. in project-conf.h) if
  * at least one of those interrupt sources will need handled */
 #ifndef PORT_2_ISR_ENABLED
-#define PORT_2_ISR_ENABLED 0
+#define PORT_2_ISR_ENABLED 1
 #endif
 
 /*
@@ -156,6 +161,8 @@
 #define TEMP_SENSOR_CONF_ON     1  /* Temperature */
 #define VDD_SENSOR_CONF_ON      1  /* Supply Voltage */
 #define BATTERY_SENSOR_CONF_ON  0  /* Battery */
+#define JOY_SENSOR_CONF_ON      1  /* Joystick Level */
+#define POT_SENSOR_CONF_ON      1  /* Potentiometer */
 
 /* Low Power Modes - We only support PM0/Idle and PM1 */
 #ifndef LPM_CONF_MODE

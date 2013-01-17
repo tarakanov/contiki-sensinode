@@ -69,7 +69,7 @@
 #define USB_CONF_ENABLE 1
 
 /* Enabled the ISR for Interrupt Num 6 */
-#define PORT_2_ISR_ENABLED 1
+#define PORT_2_ISR_ENABLED 0
 
 #ifndef USB_CONF_CLASS
 #define DMA_CONF_ON	1
@@ -112,16 +112,4 @@
 /*---------------------------------------------------------------------------*/
 /* Buttons */
 /*---------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
-/* LCD */
-/*---------------------------------------------------------------------------*/
-#if !MODEL_CC2531
-/* H/W Connections */
-#define LCD_MODE_PIN P0_0
-#define LCD_CS_PIN   P1_2
-/* P0DIR and P0SEL masks */
-#define LCD_MODE_MASK 0x01
-#define LCD_CS_MASK   0x04
-#endif
-
 #endif /* __MODELS_H__ */

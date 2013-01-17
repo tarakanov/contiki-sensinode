@@ -49,8 +49,9 @@ spi1_init()
 #endif
 #endif /*USART_ALTERNATIVE*/
 
- /*take 115200 bps for the test*/
-  UART_SET_SPEED(1, UART_115_M, UART_115_E);
+  UART_SET_SPEED(1, UART_1K_M, UART_1K_E);
+ /* Flush and goto IDLE state. 8-N-1. */
+  U1UCR  = 0x80;
 
 #if SPI1_CPOL /*SPI clock polarity */
   U1GCR |= UGCR_CPOL; /* Positive clock polarity */
@@ -72,18 +73,15 @@ spi1_init()
 
   U1CSR &= ~UCSR_MODE; /* SPI mode */
   U1DBUF = 0;
-  UTX1IE = 1;
-
 }
 /*---------------------------------------------------------------------------*/
 /* Write one byte over the SPI1. */
 void
 spi1_writeb(uint8_t byte)
 {
-  UTX1IF = 0;
-  U1DBUF = byte;
-  while(!UTX1IF); /* Wait until byte has been transmitted. */
-  UTX1IF = 0;
+  U1CSR &= ~(0x02);
+  U1DBUF = byte; 
+  do {} while( !(U1CSR & 0x02) );
 }
 /*---------------------------------------------------------------------------*/
 #endif
